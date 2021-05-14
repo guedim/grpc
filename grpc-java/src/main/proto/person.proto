@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option  java_multiple_files = true;
+option java_package = "com.guedim.model";
+
+/*
+  Person Message
+ */
+message Person {
+  // name
+  string name = 1;
+  // age
+  int32 age = 2;
+}
