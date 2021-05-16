@@ -1,4 +1,4 @@
-package com.guedim.json;
+package com.guedim.model.json;
 
 public class JsonPerson {
 

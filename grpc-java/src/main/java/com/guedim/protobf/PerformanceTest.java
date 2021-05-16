@@ -2,8 +2,8 @@ package com.guedim.protobf;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.guedim.json.JsonPerson;
 import com.guedim.model.Person;
+import com.guedim.model.json.JsonPerson;
 
 public class PerformanceTest {
 
