@@ -4,6 +4,9 @@ import com.guedim.model.Address;
 import com.guedim.model.Car;
 import com.guedim.model.Person;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PersonCompositionDemo {
 
     public static void main(String[] args) {
@@ -14,18 +17,32 @@ public class PersonCompositionDemo {
                 .setCity("Bogotá")
                 .build();
 
-        Car car = Car.newBuilder()
-                .setMake("Renailt")
+        Car clio = Car.newBuilder()
+                .setMake("Renault")
                 .setModel("Clio")
                 .setYear(2015)
                 .build();
 
+        Car spark = Car.newBuilder()
+                .setMake("Chevrolet")
+                .setModel("Spark")
+                .setYear(2015)
+                .build();
+
+        List<Car> cars = new ArrayList<>();
+        cars.add(clio);
+        cars.add(spark);
+
         Person person = Person.newBuilder()
                 .setName("Matías")
                 .setAge(4)
-                .setCar(car)
+                //.addCar(clio)
+                //.addCar(spark)
+                .addAllCar(cars)
                 .setAddress(address)
                 .build();
+
+        System.out.println(person);
 
     }
 }
