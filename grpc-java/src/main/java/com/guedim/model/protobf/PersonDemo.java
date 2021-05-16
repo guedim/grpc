@@ -1,11 +1,10 @@
 package com.guedim.model.protobf;
 
 
+import com.google.protobuf.Int32Value;
 import com.guedim.model.Person;
 
-import java.io.BufferedWriter;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -17,7 +16,7 @@ public class PersonDemo {
 
         Person mati = Person.newBuilder()
                 .setName("Matines")
-                .setAge(4)
+                .setAge(Int32Value.newBuilder().setValue(4).build())
                 .build();
 
         // write person to file

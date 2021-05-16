@@ -1,6 +1,7 @@
 package com.guedim.protobf;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.protobuf.Int32Value;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.guedim.model.Person;
 import com.guedim.model.json.JsonPerson;
@@ -24,7 +25,10 @@ public class PerformanceTest {
         };
 
         // protobf
-        Person personPb = Person.newBuilder().setName("Mati").setAge(4).build();
+        Person personPb = Person.newBuilder()
+                .setName("Mati")
+                .setAge(Int32Value.newBuilder().setValue(4).build())
+                .build();
         Runnable runnable2 = () -> {
             try {
                 byte[] bytes = personPb.toByteArray();

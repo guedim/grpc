@@ -1,5 +1,6 @@
 package com.guedim.model.protobf;
 
+import com.google.protobuf.Int32Value;
 import com.guedim.model.Address;
 import com.guedim.model.Car;
 import com.guedim.model.Person;
@@ -35,7 +36,7 @@ public class PersonCompositionDemo {
 
         Person person = Person.newBuilder()
                 .setName("Matías")
-                .setAge(4)
+                .setAge(Int32Value.newBuilder().setValue(4).build())
                 //.addCar(clio)
                 //.addCar(spark)
                 .addAllCar(cars)
