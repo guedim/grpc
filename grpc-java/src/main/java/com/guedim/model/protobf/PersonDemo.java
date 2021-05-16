@@ -1,4 +1,4 @@
-package com.guedim.protobf;
+package com.guedim.model.protobf;
 
 
 import com.guedim.model.Person;
