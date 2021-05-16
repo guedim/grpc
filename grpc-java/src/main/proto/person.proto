@@ -1,33 +1,11 @@
 syntax = "proto3";
 
+import "common/address.proto";
+import "common/car.proto";
+
 option  java_multiple_files = true;
 option java_package = "com.guedim.model";
 
-
-message Address {
-  int32 postbox = 1;
-  string street = 2;
-  string city = 3;
-}
-
-
-message Car {
-  string make = 1;
-  string model = 2;
-  int32 year = 3;
-  BodyStyle body_style = 4;
-}
-
-enum BodyStyle {
-  UNKNOW = 0;
-  SEDAN = 1;
-  COUPE = 2;
-  SUV = 3;
-}
-
-message Dealer {
-  map<int32, Car> model = 1;
-}
 
 /*
   Person Message
@@ -37,6 +15,6 @@ message Person {
   string name = 1;
   // age
   int32 age = 2;
-  Address address = 3;
-  repeated Car car = 4;
+  common.Address address = 3;
+  repeated common.Car car = 4;
 }
