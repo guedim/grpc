@@ -25,7 +25,7 @@ public class VersionCompatibilityDemo {
         Files.write(pathV2, television.toByteArray());*/
 
         // Deserialize
-        byte[] bytes = Files.readAllBytes(pathV2);
+        byte[] bytes = Files.readAllBytes(pathV1);
         System.out.println(Television.parseFrom(bytes));
     }
 }
