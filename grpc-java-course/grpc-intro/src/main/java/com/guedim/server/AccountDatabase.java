@@ -17,7 +17,7 @@ public class AccountDatabase {
     private static final Map<Integer, Integer> MAP = IntStream
             .rangeClosed(1,10)
             .boxed()
-            .collect(Collectors.toMap(Function.identity(), v -> v * 10));
+            .collect(Collectors.toMap(Function.identity(), v -> v * 1000));
 
 
     public static Integer getBalance (int accountId){
@@ -31,20 +31,4 @@ public class AccountDatabase {
     public static Integer deductBalance (int accountId, int amount) {
         return  MAP.computeIfPresent(accountId, (k,v) -> v - amount);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
