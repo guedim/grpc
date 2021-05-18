@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
 import java.util.Iterator;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -54,7 +55,9 @@ public class BankClientTest {
 
     // Non Blocking client
     @Test
-    public void withdrawAsyncTest() {
+    public void withdrawAsyncTest() throws InterruptedException {
+
+        CountDownLatch latch = new CountDownLatch(1);
 
         WithdrawRequest withdrawRequest  = WithdrawRequest
                 .newBuilder()
@@ -62,7 +65,7 @@ public class BankClientTest {
                 .setAmount(500)
                 .build();
 
-        bankServiceStub.withdraw(withdrawRequest, new MoneyStramingResponse());
-        Uninterruptibles.sleepUninterruptibly(5, TimeUnit.SECONDS);
+        bankServiceStub.withdraw(withdrawRequest, new MoneyStramingResponse(latch));
+        latch.await();
     }
 }

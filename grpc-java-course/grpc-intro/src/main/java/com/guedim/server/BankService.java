@@ -29,7 +29,7 @@ public class BankService extends BankServiceGrpc.BankServiceImplBase {
 
             if (balance < amount) {
                 invalidAmount(responseObserver,accountNumber, balance);
-                break;
+                return;
             }
 
             Money money = Money.newBuilder()
