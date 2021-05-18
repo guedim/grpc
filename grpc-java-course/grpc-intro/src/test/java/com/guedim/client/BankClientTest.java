@@ -1,27 +1,28 @@
 package com.guedim.client;
 
-import com.google.common.util.concurrent.Uninterruptibles;
-import com.guedim.model.*;
+import com.guedim.model.Balance;
+import com.guedim.model.BalanceCheckRequest;
+import com.guedim.model.BankServiceGrpc;
+import com.guedim.model.WithdrawRequest;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
-import java.util.Iterator;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class BankClientTest {
 
-    private int PORT  = 6565;
-    private String HOST = "localhost";
     private BankServiceGrpc.BankServiceBlockingStub blockingStub;
     private BankServiceGrpc.BankServiceStub bankServiceStub;
 
     @BeforeAll
     public void  setup() {
+
+        int PORT = 6565;
+        String HOST = "localhost";
 
         ManagedChannel channel = ManagedChannelBuilder.forAddress(HOST, PORT).usePlaintext().build();
 
