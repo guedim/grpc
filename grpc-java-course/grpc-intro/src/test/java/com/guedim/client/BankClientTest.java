@@ -26,7 +26,10 @@ public class BankClientTest {
 
     @Test
     public void balanceTest() {
-        BalanceCheckRequest checkRequest = BalanceCheckRequest.newBuilder().setAccountNumber(5).build();
+        BalanceCheckRequest checkRequest = BalanceCheckRequest
+                .newBuilder()
+                .setAccountNumber(200)
+                .build();
         Balance balance = blockingStub.getBalance(checkRequest);
         System.out.println("Received balance:" + balance.getAmount() +  " for account:" + checkRequest.getAccountNumber());
     }
