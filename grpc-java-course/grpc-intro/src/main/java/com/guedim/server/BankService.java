@@ -42,6 +42,11 @@ public class BankService extends BankServiceGrpc.BankServiceImplBase {
         responseObserver.onCompleted();
     }
 
+    @Override
+    public StreamObserver<DepositRequest> cashDeposit(StreamObserver<Balance> responseObserver) {
+        return new CashStreamingRequest(responseObserver);
+    }
+
     private void invalidAmount(StreamObserver<Money> responseObserver, int accountNumber, Integer balance) {
         Status status = Status.FAILED_PRECONDITION.withDescription("No enough money. Account:" + accountNumber + " only have USD $" + balance);
         responseObserver.onError(status.asRuntimeException());
