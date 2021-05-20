@@ -11,22 +11,7 @@ import org.junit.jupiter.api.TestInstance;
 import java.util.concurrent.CountDownLatch;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class BankClientTest {
-
-    private BankServiceGrpc.BankServiceBlockingStub blockingStub;
-    private BankServiceGrpc.BankServiceStub bankServiceStub;
-
-    @BeforeAll
-    public void  setup() {
-
-        int PORT = 6565;
-        String HOST = "localhost";
-
-        ManagedChannel channel = ManagedChannelBuilder.forAddress(HOST, PORT).usePlaintext().build();
-
-        blockingStub = BankServiceGrpc.newBlockingStub(channel);
-        bankServiceStub = BankServiceGrpc.newStub(channel);
-    }
+public class BankClientTest extends AbstractClientTest  {
 
     @Test
     public void balanceTest() {
