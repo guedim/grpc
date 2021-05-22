@@ -1,4 +1,4 @@
-package com.guedim.client;
+package com.guedim.client.rpctypes;
 
 import com.guedim.model.Money;
 import io.grpc.stub.StreamObserver;

@@ -1,4 +1,4 @@
-package com.guedim.server;
+package com.guedim.server.rpctypes;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;

@@ -1,10 +1,7 @@
-package com.guedim.client;
+package com.guedim.client.rpctypes;
 
 import com.guedim.model.*;
-import io.grpc.ManagedChannel;
-import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 

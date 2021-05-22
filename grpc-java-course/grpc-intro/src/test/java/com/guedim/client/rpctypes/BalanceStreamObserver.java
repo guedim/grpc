@@ -1,4 +1,4 @@
-package com.guedim.client;
+package com.guedim.client.rpctypes;
 
 import com.guedim.model.Balance;
 import io.grpc.stub.StreamObserver;
