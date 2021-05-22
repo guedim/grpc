@@ -7,6 +7,7 @@ import com.guedim.game.Player;
 import io.grpc.stub.StreamObserver;
 
 public class GameService extends GameServiceGrpc.GameServiceImplBase {
+
     @Override
     public StreamObserver<Die> roll(StreamObserver<GameState> responseObserver) {
 
