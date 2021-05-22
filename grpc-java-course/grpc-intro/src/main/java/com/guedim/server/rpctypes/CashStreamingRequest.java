@@ -1,4 +1,4 @@
-package com.guedim.server;
+package com.guedim.server.rpctypes;
 
 import com.guedim.model.Balance;
 import com.guedim.model.DepositRequest;

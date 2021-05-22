@@ -1,4 +1,4 @@
-package com.guedim.server;
+package com.guedim.server.rpctypes;
 
 import com.guedim.model.Account;
 import com.guedim.model.TransferRequest;
