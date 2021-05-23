@@ -2,7 +2,6 @@ package com.guedim.server.loadbalancing;
 
 import com.guedim.model.*;
 import com.guedim.server.rpctypes.AccountDatabase;
-import com.guedim.server.rpctypes.CashStreamingRequest;
 import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 
