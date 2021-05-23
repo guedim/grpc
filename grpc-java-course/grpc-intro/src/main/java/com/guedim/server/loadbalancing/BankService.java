@@ -2,7 +2,6 @@ package com.guedim.server.loadbalancing;
 
 import com.guedim.model.*;
 import com.guedim.server.rpctypes.AccountDatabase;
-import com.guedim.server.rpctypes.CashStreamingRequest;
 import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 
@@ -12,6 +11,7 @@ public class BankService extends BankServiceGrpc.BankServiceImplBase {
     @Override
     public void getBalance(BalanceCheckRequest request, StreamObserver<Balance> responseObserver) {
 
+        System.out.println("Received the request for account:" + request.getAccountNumber());
         int accountNumber = request.getAccountNumber();
         Balance balance = Balance.newBuilder()
                 .setAmount(AccountDatabase.getBalance(accountNumber))

@@ -5,7 +5,7 @@ import io.grpc.ServerBuilder;
 
 import java.io.IOException;
 
-public class GrpcServer {
+public class GrpcServer1 {
 
     public static int PORT = 6565;
 
@@ -15,7 +15,7 @@ public class GrpcServer {
                 .build();
 
         server.start();
-        System.out.println("Server is running in port:" + PORT);
+        System.out.println("Server 1 is running in port:" + PORT);
         server.awaitTermination();
     }
 }
