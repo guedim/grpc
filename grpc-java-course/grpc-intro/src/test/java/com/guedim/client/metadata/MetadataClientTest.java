@@ -1,21 +1,19 @@
-package com.guedim.client.deadline;
+package com.guedim.client.metadata;
 
+import com.guedim.client.deadline.DeadlineInterceptor;
 import com.guedim.model.Balance;
 import com.guedim.model.BalanceCheckRequest;
 import com.guedim.model.BankServiceGrpc;
-import com.guedim.model.WithdrawRequest;
-import io.grpc.Deadline;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.StatusRuntimeException;
+import io.grpc.stub.MetadataUtils;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
-import java.util.concurrent.TimeUnit;
-
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class DeadlineClientTest {
+public class MetadataClientTest {
 
     private BankServiceGrpc.BankServiceBlockingStub blockingStub;
     private BankServiceGrpc.BankServiceStub bankServiceStub;
@@ -28,6 +26,7 @@ public class DeadlineClientTest {
 
         ManagedChannel channel = ManagedChannelBuilder
                 .forAddress(HOST, PORT)
+                .intercept(MetadataUtils.newAttachHeadersInterceptor(ClientConstants.getClientToken()))
                 .intercept(new DeadlineInterceptor())
                 .usePlaintext()
                 .build();
@@ -43,32 +42,9 @@ public class DeadlineClientTest {
                 .build();
         try {
             Balance balance = blockingStub
-                    .withDeadline(Deadline.after(2, TimeUnit.SECONDS))
                     .getBalance(checkRequest);
             System.out.println("Received balance:" + balance.getAmount() + " for account:" + checkRequest.getAccountNumber());
         }catch (StatusRuntimeException e) {
-            // go with default value
-            System.err.println(e.getMessage());
-        }
-    }
-
-    // Blocking client
-    @Test
-    public void withdrawTest() {
-        WithdrawRequest withdrawRequest  = WithdrawRequest
-                .newBuilder()
-                .setAccountNumber(6)
-                .setAmount(10)
-                .build();
-
-        try {
-            blockingStub
-                    .withdraw(withdrawRequest)
-                    .forEachRemaining(
-                            money -> System.out.println("Received balance:" + money.getValue())
-                    );
-        } catch (StatusRuntimeException e) {
-            // go with default value
             System.err.println(e.getMessage());
         }
     }
