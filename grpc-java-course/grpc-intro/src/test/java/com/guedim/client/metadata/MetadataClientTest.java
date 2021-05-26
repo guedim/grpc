@@ -47,7 +47,7 @@ public class MetadataClientTest {
             try {
                 int random = ThreadLocalRandom.current().nextInt(1,4);
                 Balance balance = blockingStub
-                        .withCallCredentials(new UserSeesionToken("user-secret-"+ random))
+                        .withCallCredentials(new UserSeesionToken("user-secret-"+ random + ":standard"))
                         .getBalance(checkRequest);
                 System.out.println("Received balance:" + balance.getAmount() + " for account:" + checkRequest.getAccountNumber());
             }catch (StatusRuntimeException e) {
