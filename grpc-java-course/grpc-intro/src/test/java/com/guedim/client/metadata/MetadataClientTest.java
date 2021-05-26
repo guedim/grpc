@@ -12,6 +12,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class MetadataClientTest {
 
@@ -40,12 +42,17 @@ public class MetadataClientTest {
                 .newBuilder()
                 .setAccountNumber(7)
                 .build();
-        try {
-            Balance balance = blockingStub
-                    .getBalance(checkRequest);
-            System.out.println("Received balance:" + balance.getAmount() + " for account:" + checkRequest.getAccountNumber());
-        }catch (StatusRuntimeException e) {
-            System.err.println(e.getMessage());
+
+        for (int i = 0; i < 20; i++) {
+            try {
+                int random = ThreadLocalRandom.current().nextInt(1,4);
+                Balance balance = blockingStub
+                        .withCallCredentials(new UserSeesionToken("user-secret-"+ random))
+                        .getBalance(checkRequest);
+                System.out.println("Received balance:" + balance.getAmount() + " for account:" + checkRequest.getAccountNumber());
+            }catch (StatusRuntimeException e) {
+                System.err.println(e.getMessage());
+            }
         }
     }
 }
