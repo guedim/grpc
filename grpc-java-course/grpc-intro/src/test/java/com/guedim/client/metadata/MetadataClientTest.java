@@ -4,6 +4,7 @@ import com.guedim.client.deadline.DeadlineInterceptor;
 import com.guedim.model.Balance;
 import com.guedim.model.BalanceCheckRequest;
 import com.guedim.model.BankServiceGrpc;
+import com.guedim.model.WithdrawRequest;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.StatusRuntimeException;
@@ -12,6 +13,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ThreadLocalRandom;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -54,5 +56,24 @@ public class MetadataClientTest {
                 System.err.println(e.getMessage());
             }
         }
+    }
+
+
+    // Non Blocking client
+    @Test
+    public void withdrawAsyncTest() throws InterruptedException {
+
+        CountDownLatch latch = new CountDownLatch(1);
+
+        WithdrawRequest withdrawRequest  = WithdrawRequest
+                .newBuilder()
+                .setAccountNumber(10)
+                .setAmount(30)
+                .build();
+
+        bankServiceStub
+                .withCallCredentials(new UserSeesionToken("user-secret-3:standard"))
+                .withdraw(withdrawRequest, new MoneyStramingResponse(latch));
+        latch.await();
     }
 }
