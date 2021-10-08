@@ -7,6 +7,7 @@
 		<module>visanet</module>
 		<module>credibanco</module>
 		<module>response-code-service</module>
+		<module>core</module>
 	</modules>
 
 	<parent>
