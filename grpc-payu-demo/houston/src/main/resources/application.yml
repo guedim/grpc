@@ -1,2 +1,10 @@
 server:
-  port : 8081
+  port : 8080
+
+feign:
+  client:
+    config:
+      visanet-feign-client:
+        connectTimeout: 300
+        readTimeout: 5000
+        loggerLevel: basic
