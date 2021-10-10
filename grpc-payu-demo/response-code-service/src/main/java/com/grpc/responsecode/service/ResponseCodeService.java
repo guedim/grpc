@@ -10,6 +10,8 @@ import com.grpc.payu.response.ResponseCodeServiceGrpc;
 import io.grpc.stub.StreamObserver;
 import org.lognet.springboot.grpc.GRpcService;
 
+
+// See: https://github.com/LogNet/grpc-spring-boot-starter
 @GRpcService
 public class ResponseCodeService extends ResponseCodeServiceGrpc.ResponseCodeServiceImplBase {
 
