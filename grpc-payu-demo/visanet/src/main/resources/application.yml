@@ -1,2 +1,8 @@
 server:
   port : 8081
+
+grpc:
+  client:
+    response-code-service:
+      address: static://localhost:8083
+      negotiationType: plaintext

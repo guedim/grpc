@@ -13,7 +13,7 @@ message ResponseCodeRequest {
 
 message ResponseCodeResponse {
   common.PayUState payu_state= 1;
-  common.PayUResponseCode payu_reponse_code = 2;
+  common.PayUResponseCode payu_response_code = 2;
 }
 
 service ResponseCodeService {
