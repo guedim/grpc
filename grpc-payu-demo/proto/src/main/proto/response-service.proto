@@ -1,0 +1,21 @@
+
+syntax = "proto3";
+
+import "common/common-services.proto";
+
+option java_multiple_files = true;
+option java_package = "com.grpc.payu.response";
+
+message ResponseCodeRequest {
+  string external_payment_network_response_code = 1;
+  common.PayUPaymentNetwork payu_payment_network = 2;
+}
+
+message ResponseCodeResponse {
+  common.PayUState payu_state= 1;
+  common.PayUResponseCode payu_reponse_code = 2;
+}
+
+service ResponseCodeService {
+  rpc getResponseCode (ResponseCodeRequest) returns (ResponseCodeResponse);
+}

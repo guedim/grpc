@@ -8,6 +8,7 @@
 		<module>credibanco</module>
 		<module>response-code-service</module>
 		<module>core</module>
+		<module>proto</module>
 	</modules>
 
 	<parent>
