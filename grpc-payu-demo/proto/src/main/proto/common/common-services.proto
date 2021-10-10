@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package common;
+
+option java_multiple_files = true;
+option java_package = "com.grpc.payu.common";
+
+enum PayUPaymentNetwork {
+    CREDIBANCO = 0;
+    VISANET = 1;
+}
+
+enum PayUState {
+    APPROVEDD = 0;
+    DECLINED = 1;
+}
+
+enum PayUResponseCode {
+    APPROVED = 0;
+    PAYMENT_NETWORK_REJECTED = 1;
+    INSUFFICIENT_FUNDS = 2;
+    INVALID_CARD = 3;
+    EXPIRED_CARD = 4;
+    EXCEEDED_AMOUNT = 5;
+}
