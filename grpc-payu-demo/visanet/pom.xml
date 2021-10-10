@@ -18,11 +18,6 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>io.github.lognet</groupId>
-            <artifactId>grpc-client-spring-boot-starter</artifactId>
-            <version>4.5.7</version>
-        </dependency>
-        <dependency>
             <groupId>com.grpc</groupId>
             <artifactId>proto</artifactId>
             <version>0.0.1-SNAPSHOT</version>
@@ -32,7 +27,6 @@
             <artifactId>grpc-client-spring-boot-starter</artifactId>
             <version>2.12.0.RELEASE</version>
         </dependency>
-
     </dependencies>
 
     <properties>

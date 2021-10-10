@@ -1,4 +1,4 @@
-package com.grpc.visanet.service;
+package com.grpc.credibanco.service;
 
 import com.grpc.core.model.PayUResponseCode;
 import com.grpc.core.model.PayUState;
@@ -19,7 +19,7 @@ public class ResponseCodeClientService {
     public PaymentResponse getResponse(String paymentNetworkResponse) {
 
         ResponseCodeRequest request = ResponseCodeRequest.newBuilder()
-                .setPayuPaymentNetwork(PayUPaymentNetwork.VISANET)
+                .setPayuPaymentNetwork(PayUPaymentNetwork.CREDIBANCO)
                 .setExternalPaymentNetworkResponseCode(paymentNetworkResponse)
                 .build();
 
