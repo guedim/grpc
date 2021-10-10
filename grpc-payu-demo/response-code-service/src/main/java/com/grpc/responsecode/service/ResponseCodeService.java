@@ -21,9 +21,9 @@ public class ResponseCodeService extends ResponseCodeServiceGrpc.ResponseCodeSer
         PayUPaymentNetwork payUPaymentNetwork =  request.getPayuPaymentNetwork();
         String externalResponseCode = request.getExternalPaymentNetworkResponseCode();
 
-
+        //TODO: Generar respuesta aleatoria dependiente de la red
         ResponseCodeResponse response = ResponseCodeResponse.newBuilder()
-                .setPayuReponseCode(PayUResponseCode.EXCEEDED_AMOUNT)
+                .setPayuResponseCode(PayUResponseCode.EXCEEDED_AMOUNT)
                 .setPayuState(PayUState.DECLINED)
                 .build();
 
