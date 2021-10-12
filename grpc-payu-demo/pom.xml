@@ -20,7 +20,7 @@
 
 	<groupId>com.grpc</groupId>
 	<artifactId>payu</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<packaging>pom</packaging>
 
 	<name>payu</name>

@@ -6,7 +6,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(value = "credibanco-feign-client", url = "http://localhost:8082")
+@FeignClient(value = "credibanco-feign-client", url = "${feign.client.config.credibanco-feign-client.url}")
 public interface CredibanCoFeignClient {
 
      @PostMapping(value = "/credibanco-payment")

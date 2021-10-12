@@ -1,0 +1,73 @@
+version: '3.9'
+
+# Define services
+services:
+
+  # Houston service
+  houston:
+    build:
+      context: ./houston
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - "visanet"
+      - "credibanco"
+    restart: always
+    links:
+      - visanet
+      - credibanco
+    environment:
+      - "feign.client.config.visanet-feign-client.url=http://visanet:8081"
+      - "feign.client.config.credibanco-feign-client.url=http://credibanco:8082"
+    networks:
+      - backend
+
+  # Visanet service
+  visanet:
+    build:
+      context: ./visanet
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    depends_on:
+      - "response-code"
+    restart: always
+    links:
+      - response-code
+    environment:
+      - "grpc.client.response-code-service.address=static://response-code:8083"
+    networks:
+      - backend
+
+  # CredibanCo service
+  credibanco:
+    build:
+      context: ./credibanco
+      dockerfile: Dockerfile
+    ports:
+      - "8082:8082"
+    depends_on:
+      - "response-code"
+    restart: always
+    links:
+      - response-code
+    environment:
+      - "grpc.client.response-code-service.address=static://response-code:8083"
+    networks:
+      - backend
+
+  # Response code  service
+  response-code:
+    build:
+      context: ./response-code-service
+      dockerfile: Dockerfile
+    ports:
+      - "8083:8083"
+    restart: always
+    networks:
+      - backend
+
+# Networks to be created to facilitate communication between containers
+networks:
+  backend:
