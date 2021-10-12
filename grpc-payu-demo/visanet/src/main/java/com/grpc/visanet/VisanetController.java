@@ -1,6 +1,7 @@
 package com.grpc.visanet;
 
 import com.grpc.core.model.*;
+import com.grpc.core.util.ResponseCodeGeneratorUtil;
 import com.grpc.visanet.service.ResponseCodeClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,9 +22,7 @@ public class VisanetController {
     @PostMapping(value = "/visanet-payment")
     PaymentResponse process(@RequestBody Request request) {
 
-        //TODO: Generar un String Aleaotiro
-        String paymentNetworkResponse = "00";
-
+        String paymentNetworkResponse = ResponseCodeGeneratorUtil.generateResponseCode();
         return service.getResponse(paymentNetworkResponse);
     }
 }
