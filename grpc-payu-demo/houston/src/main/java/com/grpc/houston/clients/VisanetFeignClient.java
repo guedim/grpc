@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@FeignClient(value = "visanet-feign-client", url = "http://localhost:8081")
+@FeignClient(value = "visanet-feign-client", url = "${feign.client.config.visanet-feign-client.url}")
 public interface VisanetFeignClient {
 
      @PostMapping(value = "/visanet-payment")
