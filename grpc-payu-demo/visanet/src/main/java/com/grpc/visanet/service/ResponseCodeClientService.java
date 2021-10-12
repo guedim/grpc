@@ -27,7 +27,7 @@ public class ResponseCodeClientService {
 
         // PayU Response
         PaymentResponse response = new PaymentResponse();
-        response.setState(PayUState.valueOf(grpcResponse.getPayuState().name()));
+        response.setState(PayUState.toPayUState(grpcResponse.getPayuState().name()));
         response.setResponseCode(PayUResponseCode.valueOf(grpcResponse.getPayuResponseCode().name()));
         return response;
     }
