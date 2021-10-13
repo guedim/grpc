@@ -1,6 +1,12 @@
 server:
   port : 8080
 
+spring:
+  application:
+    name: houston
+  zipkin:
+    enabled: true
+
 feign:
   client:
     config:

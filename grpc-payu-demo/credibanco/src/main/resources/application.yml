@@ -1,6 +1,12 @@
 server:
   port : 8082
 
+spring:
+  application:
+    name: credibanco
+  zipkin:
+    enabled: true
+
 grpc:
   client:
     response-code-service:
