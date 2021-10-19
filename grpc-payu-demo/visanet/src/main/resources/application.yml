@@ -6,6 +6,7 @@ spring:
     name: visanet
   zipkin:
     enabled: true
+    baseUrl: http://localhost:9411/
 
 grpc:
   client:
