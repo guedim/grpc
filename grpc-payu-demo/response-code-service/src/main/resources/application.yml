@@ -2,3 +2,15 @@ grpc:
   port: 8083
   enableReflection: true
   shutdownGrace: 30
+
+spring:
+  main:
+    web-application-type: none
+  sleuth:
+    grpc:
+      enabled: true
+  application:
+    name: response
+  zipkin:
+    enabled: true
+    baseUrl: http://localhost:9411/

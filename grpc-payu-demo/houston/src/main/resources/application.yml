@@ -1,6 +1,13 @@
 server:
   port : 8080
 
+spring:
+  application:
+    name: houston
+  zipkin:
+    enabled: true
+    baseUrl: http://localhost:9411/
+
 feign:
   client:
     config:

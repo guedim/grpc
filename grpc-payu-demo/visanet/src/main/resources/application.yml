@@ -1,6 +1,13 @@
 server:
   port : 8081
 
+spring:
+  application:
+    name: visanet
+  zipkin:
+    enabled: true
+    baseUrl: http://localhost:9411/
+
 grpc:
   client:
     response-code-service:

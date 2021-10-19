@@ -13,13 +13,16 @@ services:
     depends_on:
       - "visanet"
       - "credibanco"
+      - "zipkin"
     restart: always
     links:
       - visanet
       - credibanco
+      - zipkin
     environment:
       - "feign.client.config.visanet-feign-client.url=http://visanet:8081"
       - "feign.client.config.credibanco-feign-client.url=http://credibanco:8082"
+      - "spring.zipkin.baseUrl=http://zipkin:9411/"
     networks:
       - backend
 
@@ -32,11 +35,14 @@ services:
       - "8081:8081"
     depends_on:
       - "response-code"
+      - "zipkin"
     restart: always
     links:
       - response-code
+      - zipkin
     environment:
       - "grpc.client.response-code-service.address=static://response-code:8083"
+      - "spring.zipkin.baseUrl=http://zipkin:9411/"
     networks:
       - backend
 
@@ -49,11 +55,14 @@ services:
       - "8082:8082"
     depends_on:
       - "response-code"
+      - "zipkin"
     restart: always
     links:
       - response-code
+      - zipkin
     environment:
       - "grpc.client.response-code-service.address=static://response-code:8083"
+      - "spring.zipkin.baseUrl=http://zipkin:9411/"
     networks:
       - backend
 
@@ -65,6 +74,18 @@ services:
     ports:
       - "8083:8083"
     restart: always
+    links:
+      - zipkin
+    environment:
+      - "spring.zipkin.baseUrl=http://zipkin:9411/"
+    networks:
+      - backend
+
+  # Zipkin server
+  zipkin:
+    image: "openzipkin/zipkin"
+    ports:
+      - "9411:9411"
     networks:
       - backend
 
