@@ -1,13 +1,14 @@
 # PayU gRPC
 
-PayU gRPC simple project.
+Spring boot gRPC simple project using tracing.
 
 ## Project Structure
 
-1. Houston: Main project (Rest API) for accepting payment requests.
-2. VisaNet: Payment Network (Rest API) for processing Perú payment requests.
-3. CredibanCo: Payment Network (Rest API) for processing Colombia payment requests.
-4. response-service: gRPC server for generate response codes
+1. proto: Main project with proto file. Define messages and service.
+2. Houston: Project (Rest API) for accepting payment requests.
+3. VisaNet: Payment Network (Rest API) for processing Perú payment requests. Has an internal gRPC client.
+4. CredibanCo: Payment Network (Rest API) for processing Colombia payment requests. Has an internal gRPC client.
+5. response-service: gRPC server for generate response codes
 
 ![Payment flow](./doc/grpc-sample.png "Services flow")
 
