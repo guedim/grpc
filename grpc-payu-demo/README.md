@@ -69,6 +69,8 @@ For testing CredibanCo, run next command:
 }'
 ```
 
+Or find all sample post in this [link](doc/gRPC%20PayU%20Demo.postman_collection.json).
+
 Open a browser in  ``http://localhost:9451`` and see tracing differences for Rest and gRPC services.
 ![zipkin](doc/zipkin.png)
 
